@@ -1,0 +1,90 @@
+.items-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(245, 245, 245);
+    padding: 20px;
+    font-size: 1.1rem;
+    color: #000000;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.items-count {
+    background-color: #dfdfdf;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.items-count span {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    background-color: #257544;
+    padding: 3px;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 1rem;
+    margin: 5px;
+}
+
+.items-table-container {
+    margin: auto;
+    margin-top: 50px;
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 70%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .items-table th,
+  .items-table td {
+    padding: 20px 10px;
+  }
+  
+  .items-table tr {
+    border-bottom: 2px solid #e2e2e2;
+  }
+
+  .items-table tbody tr:hover {
+    cursor: pointer;
+  }
+
+  .items-table tbody tr:hover {
+    background-color: #2575441e;
+  }
+  
+  .items-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: #0000006b;
+  }
+
+  .items-table td a {
+    color: #000000;
+  }
+
+  .items-table td a:hover {
+    color: #257544;
+  }
+
+.btn-add {
+    margin-top: 30px;
+    padding: 11px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: #257544;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    width: 125px;
+}
+  

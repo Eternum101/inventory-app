@@ -1,0 +1,90 @@
+.category-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(245, 245, 245);
+    padding: 20px;
+    font-size: 1.1rem;
+    color: #000000;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.category-count {
+    background-color: #dfdfdf;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.category-count span {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    background-color: #257544;
+    padding: 3px;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 1rem;
+    margin: 5px;
+}
+
+.category-table-container {
+    margin: auto;
+    margin-top: 50px;
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 70%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.category-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .category-table th,
+  .category-table td {
+    padding: 20px 10px;
+  }
+  
+  .category-table tr {
+    border-bottom: 2px solid #e2e2e2;
+  }
+
+  .category-table tbody tr:hover {
+    cursor: pointer;
+  }
+
+  .category-table tbody tr:hover {
+    background-color: #2575441e;
+  }
+  
+  .category-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: #0000006b;
+  }
+
+  .category-table td a {
+    color: #000000;
+  }
+
+  .category-table td a:hover {
+    color: #257544;
+  }
+
+.btn-add {
+    margin-top: 30px;
+    padding: 11px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: #257544;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    width: 150px;
+}
+  
