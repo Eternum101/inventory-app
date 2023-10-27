@@ -18,6 +18,7 @@ function AddItems() {
         axios.get('/categories')
             .then(response => {
                 setCategories(response.data);
+                console.log(categories);
             })
             .catch(error => {
                 console.error('There was an error!', error);
@@ -33,7 +34,7 @@ function AddItems() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-    }
+    };       
 
     return (
         <>

@@ -10,6 +10,7 @@ function FindCategories() {
       axios.get('/categories')
         .then(response => {
           setCategories(response.data);
+          console.log(categories);
         })
         .catch(error => {
           console.error(`There was an error retrieving the category data: ${error}`);

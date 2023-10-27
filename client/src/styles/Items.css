@@ -173,4 +173,5 @@ form span {
   outline: none;
   border-radius: 2px;
   width: 200px;
+  cursor: pointer;
 }
