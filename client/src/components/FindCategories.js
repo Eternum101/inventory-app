@@ -23,8 +23,8 @@ function FindCategories() {
     return (
         <>
         <div className='category-header'>
-          <p>Category Items</p>
-        <div className='items-count'>
+          <p className='category-list'>Category List</p>
+        <div className='category-count'>
             <p>All Categories <span>{categoriesCount}</span></p>
         </div>
         </div>

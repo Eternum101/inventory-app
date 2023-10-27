@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/Items.css'
+import { Link } from 'react-router-dom';
 
 function FindItems() {
   const [items, setItems] = useState([]);
@@ -23,10 +24,10 @@ function FindItems() {
   return (
     <>
     <div className='items-header'>
-      <p>Inventory Items</p>
-      <div className='items-count'>
+      <p className='item-list'>Items List</p>
+    <div className='items-count'>
         <p>All Items <span>{itemCount}</span></p>
-      </div>
+    </div>
     </div>
     <div className='items-table-container'>
       <table className='items-table'>
@@ -51,7 +52,7 @@ function FindItems() {
           ))}
         </tbody>
       </table>
-      <button className='btn-add'>+ Add Item</button>
+      <button className='btn-add'><Link to='/add-items'>+ Add Item</Link></button>
     </div>
     </>
   );

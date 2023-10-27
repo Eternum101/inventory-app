@@ -44,7 +44,16 @@ a {
     color: #252525;
 }
 
+.navbar-right li:focus-within {
+    background-color: #fff;
+    border-radius: 5px;
+    color: #252525;
+}
 
+.navbar-right li:focus-within a {
+    color: #252525;
+}
+  
 .navbar-right svg {
     font-size: 1.1rem;
 }

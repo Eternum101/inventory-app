@@ -9,10 +9,20 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
+.category-list {
+  background-color: #257544;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 50px;
+  color: #fff;
+  width: 150px;
+  text-align: center;
+}
+
 .category-count {
-    background-color: #dfdfdf;
-    padding: 10px;
-    border-radius: 5px;
+  border: solid 2px #257544;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .category-count span {
