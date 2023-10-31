@@ -66,7 +66,7 @@ function FindItems() {
           ))}
         </tbody>
       </table>
-      <button className='btn-add'><Link to='/add-items'>+ Add Item</Link></button>
+      <Link to='/add-items'><button className='btn-add'>+ Add Item</button></Link>
     </div>
     </>
   );

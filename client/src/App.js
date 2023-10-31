@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Items from "./pages/Items";
 import Categories from "./pages/Categories";
 import AddItems from "./components/AddItems";
+import AddCategory from "./components/AddCategory";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <Route path="/items" element={<Items />} />
       <Route path="/categories" element={<Categories />} />
       <Route path="/add-items" element={<AddItems/>} />
+      <Route path="/add-category" element={<AddCategory/>} />
     </Routes>
   </Router>
   );

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styles/Categories.css'
+import '../styles/Categories.css';
+import { Link } from 'react-router-dom';
 
 function FindCategories() {
     const [categories, setCategories] = useState([]);
@@ -48,7 +49,7 @@ function FindCategories() {
               ))}
             </tbody>
           </table>
-          <button className='btn-add'>+ Add Category</button>
+          <Link to='/add-category'><button className='btn-add'>+ Add Category</button></Link>
         </div>
         </>
       );

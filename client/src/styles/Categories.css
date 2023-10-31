@@ -96,5 +96,87 @@
     cursor: pointer;
     font-weight: 700;
     width: 150px;
+    transition: opacity 150ms ease-in-out;
+}
+
+.btn-add:hover {
+  opacity: 0.9;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fff;
+  padding: 30px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+  width: 50%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+form input, form select {
+  padding: 7px;
+  border: 2px solid #cacaca;
+  border-radius: 2px;
+  transition: border 150ms ease-in-out;
+  font-size: 0.9rem;
+}
+
+form input:hover,
+form input:focus,
+form select:hover,
+form select:focus {
+  border: 2px solid #257544;
+  outline: none;
+}
+
+form span {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  border: solid 2px #257544;
+  padding: 8px;
+  border-radius: 50%;
+  color: #257544;
+  font-size: 0.9rem;
+}
+
+.form-header {
+  padding: 10px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #000000b7;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.submit-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.btn-submit {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #257544;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  width: 200px;
+  cursor: pointer;
 }
   
