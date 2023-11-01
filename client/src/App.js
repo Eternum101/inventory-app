@@ -5,6 +5,8 @@ import Items from "./pages/Items";
 import Categories from "./pages/Categories";
 import AddItems from "./components/AddItems";
 import AddCategory from "./components/AddCategory";
+import CategoriesDetail from "./components/CategoryDetail";
+import ItemDetail from "./components/ItemDetail";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
       <Route path="/categories" element={<Categories />} />
       <Route path="/add-items" element={<AddItems/>} />
       <Route path="/add-category" element={<AddCategory/>} />
+      <Route path="/category/:id" element={<CategoriesDetail />} />
+      <Route path="/items/:id" element={<ItemDetail />} />
     </Routes>
   </Router>
   );

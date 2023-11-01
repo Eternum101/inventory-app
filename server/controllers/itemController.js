@@ -5,6 +5,15 @@ exports.getAllItems = async (req, res) => {
   res.json(items);
 };
 
+exports.getItemById = async (req, res) => {
+  const id = req.params.id;
+  const item = await Item.findById(id);
+  if (!item) {
+    return res.status(404).json({ message: 'Item not found' });
+  }
+  res.json(item);
+};
+
 exports.createItem = async (req, res) => {
   const newItem = new Item(req.body);
   const item = await newItem.save();

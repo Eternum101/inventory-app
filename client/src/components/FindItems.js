@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/Items.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function FindItems() {
   const [items, setItems] = useState([]);
   const [itemCount, setItemCount] = useState(0);
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get('/items')
@@ -35,6 +36,10 @@ function FindItems() {
     return category ? category.name: '';
   }
 
+  const handleRowClick = (id) => {
+    navigate(`/items/${id}`);
+  }
+
   return (
     <>
     <div className='items-header'>
@@ -56,7 +61,7 @@ function FindItems() {
         </thead>
         <tbody>
         {items.map(item => (
-            <tr key={item._id}>
+            <tr key={item._id} onClick={() => handleRowClick(item._id)}>
               <td>{item.name}</td>
               <td>{getCategoryName(item.category)}</td>
               <td>{item.price}</td>

@@ -16,6 +16,15 @@ exports.getCategoryCount = async (req, res) => {
     res.json(count);
 };  
 
+exports.getCategoryById = async (req, res) => {
+  const id = req.params.id;
+  const category = await Category.findById(id);
+  if (!category) {
+    return res.status(404).json({ message: 'Category not found' });
+  }
+  res.json(category);
+};
+
 // Add the rest of the CRUD operations' controllers here
 
 module.exports = exports;

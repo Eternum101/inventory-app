@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/Categories.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function FindCategories() {
     const [categories, setCategories] = useState([]);
     const [categoriesCount, setCategoriesCount] = useState(0);
-  
+    const navigate = useNavigate(); 
+
     useEffect(() => {
       axios.get('/categories')
         .then(response => {
@@ -21,6 +22,10 @@ function FindCategories() {
         .then(res => setCategoriesCount(res.data))
         .catch(error => console.error(`There was an error retrieving the item count: ${error}`));
     }, []);
+
+    const handleRowClick = (id) => {
+      navigate(`/category/${id}`);
+    }
 
     return (
         <>
@@ -41,7 +46,7 @@ function FindCategories() {
             </thead>
             <tbody>
             {categories.map(category => (
-                <tr key={category._id}>
+                <tr key={category._id} onClick={() => handleRowClick(category._id)}>
                   <td>{category.name}</td>
                   <td>{category.description}</td>
                   <td><a href={category.url}>Link</a></td>
