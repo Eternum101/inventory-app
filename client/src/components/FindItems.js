@@ -1,35 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import '../styles/Items.css'
+import React from 'react';
+import useFetch from '../hooks/useFetch';
+import '../styles/Items.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 function FindItems() {
-  const [items, setItems] = useState([]);
-  const [itemCount, setItemCount] = useState(0);
-  const [categories, setCategories] = useState([]);
+  const { data: items, loading: itemsLoading } = useFetch('/items');
+  const { data: categories, loading: categoriesLoading } = useFetch('/categories');
+  const { data: itemCount, loading: countLoading } = useFetch('/items/count');
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get('/items')
-      .then(response => {
-        setItems(response.data);
-      })
-      .catch(error => {
-        console.error(`There was an error retrieving the item data: ${error}`);
-      });
-
-    axios.get('/categories')
-      .then(response => {
-        setCategories(response.data);
-      })
-      .catch(error => {
-        console.error(`There was an error retrieving the category data: ${error}`);
-      });
-
-    axios.get('/items/count')
-      .then(res => setItemCount(res.data))
-      .catch(error => console.error(`There was an error retrieving the item count: ${error}`));
-  }, []);
+  if (itemsLoading || categoriesLoading || countLoading) {
+    return <div>Loading...</div>;
+  }
 
   const getCategoryName = (categoryId) => {
     const category = categories.find(category => category._id === categoryId);

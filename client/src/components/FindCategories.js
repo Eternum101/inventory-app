@@ -1,30 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import useFetch from '../hooks/useFetch';
 import '../styles/Categories.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 function FindCategories() {
-    const [categories, setCategories] = useState([]);
-    const [categoriesCount, setCategoriesCount] = useState(0);
+    const { data: categories, loading: categoriesLoading } = useFetch('/categories');
+    const { data: categoriesCount, loading: countLoading } = useFetch('/categories/count');
     const navigate = useNavigate(); 
 
-    useEffect(() => {
-      axios.get('/categories')
-        .then(response => {
-          setCategories(response.data);
-          console.log(categories);
-        })
-        .catch(error => {
-          console.error(`There was an error retrieving the category data: ${error}`);
-        });
-
-    axios.get('/categories/count')
-        .then(res => setCategoriesCount(res.data))
-        .catch(error => console.error(`There was an error retrieving the item count: ${error}`));
-    }, []);
+    if (categoriesLoading || countLoading) {
+      return <div>Loading...</div>;
+    }
 
     const handleRowClick = (id) => {
-      navigate(`/category/${id}`);
+      navigate(`/categories/${id}`);
     }
 
     return (

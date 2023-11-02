@@ -242,6 +242,12 @@ form span {
 
 .btn-update {
   border: 2px solid #257544;
+  transition: background-color 150ms ease-in-out;
+}
+
+.btn-update:hover {
+  background-color: #257544;
+  color: white;
 }
 
 .btn-delete {

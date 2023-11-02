@@ -179,4 +179,83 @@ form span {
   width: 200px;
   cursor: pointer;
 }
-  
+
+.category-detail-container {
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 50px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  width: 70%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.category-detail-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.category-detail-header p {
+  color: #474c52;
+}
+
+.category-detail-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+  background-color: #e9e9e9;
+  padding: 20px;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.category-detail-body p {
+  font-size: 18px;
+}
+
+.category-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-category {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 10px;
+}
+
+.btn-category button {
+  padding: 10px;
+  outline: none;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-update {
+  border: 2px solid #257544;
+  transition: background-color 150ms ease-in-out;
+}
+
+.btn-update:hover {
+  background-color: #257544;
+  color: white;
+}
+
+.btn-delete {
+  background-color: #d10202;
+  border: none;
+  color: white;
+}

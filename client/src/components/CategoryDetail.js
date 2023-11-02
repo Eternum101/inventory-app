@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import useFetch from '../hooks/useFetch';
+import '../styles/Categories.css';
 
 function CategoriesDetail() {
-    const [categories, setCategories] = useState(null);
-    const { id } = useParams(); // get the id from the URL
+    const { id } = useParams();
+    const { data: categories, loading } = useFetch(`/categories/${id}`);
+    const navigate = useNavigate(); 
 
-    useEffect(() => {
-      axios.get(`/categories/${id}`)
-        .then(response => {
-          setCategories(response.data);
-        })
-        .catch(error => {
-          console.error(`There was an error retrieving the categories data: ${error}`);
-        });
-    }, [id]); // re-run the effect when the id changes
-
-    if (!categories) {
-      return <div>Loading...</div>; // display a loading message while the data is being fetched
+    if (loading) {
+      return <div>Loading...</div>;
     }
 
     return (
-        <div>
-          <h1>{categories.name}</h1>
-          <p>{categories.description}</p>
-          <a href={categories.url}>Link</a>
-        </div>
-      );
+      <div className='category-detail-container'>
+          <div className='category-detail-header'>
+              <h1>{categories.name}</h1>
+              <p>{categories.description}</p>
+          </div>
+          <div className='category-detail-body'>
+            <a href={categories.url} className='category-link'>Link</a>
+            <div className='btn-category'>
+              <button className='btn-update' onClick={() => navigate(`/categories/update/${id}`)}>Update category</button>
+              <button className='btn-delete'>Delete category</button>
+            </div>
+          </div>
+      </div>
+    );
 }
 
 export default CategoriesDetail;

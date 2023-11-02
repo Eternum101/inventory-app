@@ -25,6 +25,14 @@ exports.getCategoryById = async (req, res) => {
   res.json(category);
 };
 
+exports.updateCategory = async (req, res) => {
+  const category = await Category.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  if (!category) {
+    return res.status(404).json({ message: 'Item not found' });
+  }
+  res.json(category);
+};
+
 // Add the rest of the CRUD operations' controllers here
 
 module.exports = exports;

@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
+import useFetch from '../hooks/useFetch';
 import '../styles/Items.css';
 
 function AddItems() {
@@ -12,18 +13,7 @@ function AddItems() {
         url: ''
     });
 
-    const [categories, setCategories] = useState([]);
-
-    useEffect(() => {
-        axios.get('/categories')
-            .then(response => {
-                setCategories(response.data);
-                console.log(categories);
-            })
-            .catch(error => {
-                console.error('There was an error!', error);
-            });
-    }, []);
+    const { data: categories, loading } = useFetch('/categories');
 
     const handleChange = (e) => {
         setItems({
@@ -52,7 +42,11 @@ function AddItems() {
             .catch(error => {
                 console.error('There was an error!', error);
             });
-    };               
+    };
+    
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <>

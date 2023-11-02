@@ -1,41 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import useFetch from '../hooks/useFetch';
 import '../styles/Items.css'; 
 
 function ItemDetail() {
-    const [items, setItems] = useState(null);
     const { id } = useParams();
-    const [categories, setCategories] = useState([]);
+    const navigate = useNavigate();
+    const { data: items, loading: itemsLoading } = useFetch(`/items/${id}`);
+    const { data: categories, loading: categoriesLoading } = useFetch('/categories');
 
-    useEffect(() => {
-        axios.get(`/items/${id}`)
-          .then(response => {
-            setItems(response.data);
-          })
-          .catch(error => {
-            console.error(`There was an error retrieving the categories data: ${error}`);
-          });
-      }, [id]);
-  
-      if (!items) {
+    if (itemsLoading || categoriesLoading) {
         return <div>Loading...</div>;
-      }
+    }
 
-      axios.get('/categories')
-      .then(response => {
-        setCategories(response.data);
-      })
-      .catch(error => {
-        console.error(`There was an error retrieving the category data: ${error}`);
-      });
-
-      const getCategoryName = (categoryId) => {
+    const getCategoryName = (categoryId) => {
         const category = categories.find(category => category._id === categoryId);
         return category ? category.name: '';
-      }
+    }
 
-      return (
+    return (
         <div className='item-detail-container'>
             <div className='item-detail-header'>
                 <h1>{items.name}</h1>
@@ -47,7 +30,7 @@ function ItemDetail() {
               <p><strong>Number in Stock:</strong> {items.numberInStock}</p>
               <a href={items.url} className='item-link'>Link</a>
               <div className='btn-items'>
-                <button className='btn-update'>Update Item</button>
+                <button className='btn-update' onClick={() => navigate(`/items/update/${id}`)}>Update Item</button>
                 <button className='btn-delete'>Delete Item</button>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import '../styles/Categories.css';
 
@@ -9,17 +9,6 @@ function AddCategory() {
         url: '',
     });
 
-    useEffect(() => {
-        axios.get('/categories')
-            .then(response => {
-                setCategories(response.data);
-                console.log(categories);
-            })
-            .catch(error => {
-                console.error('There was an error!', error);
-            });
-    }, []);
-
     const handleChange = (e) => {
         setCategories({
             ...categories,
@@ -27,20 +16,29 @@ function AddCategory() {
         });
     };
 
+    const formRef = useRef();
+
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('/categories', categories)
             .then(response => {
                 console.log(response);
+                setCategories({
+                    name: '',
+                    description: '',
+                    url: '',
+                });
+                formRef.current.reset();
             })
             .catch(error => {
                 console.error('There was an error!', error);
             });
-    };       
+    }; 
+          
 
     return (
         <>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} ref={formRef}>
         <div className='form-header'>
             <p>Add New Category</p>
         </div>
