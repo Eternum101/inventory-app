@@ -21,7 +21,7 @@ function Home() {
     <>
     <div className="content-container">
         <div className="inventory-summary-container">
-            <h1>Inventory Summary</h1>
+            <h1>Overall Summary</h1>
             <div className="summary-container">
                 <div className="count-summary">
                     <LuPackageCheck className="icon-1"/>

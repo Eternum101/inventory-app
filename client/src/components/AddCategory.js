@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import '../styles/Categories.css';
+import { useNavigate } from 'react-router-dom';
 
 function AddCategory() {
     const [categories, setCategories] = useState({
@@ -16,6 +17,8 @@ function AddCategory() {
         });
     };
 
+    const navigate = useNavigate();
+
     const formRef = useRef();
 
     const handleSubmit = (e) => {
@@ -29,6 +32,7 @@ function AddCategory() {
                     url: '',
                 });
                 formRef.current.reset();
+                navigate(`/categories/`);
             })
             .catch(error => {
                 console.error('There was an error!', error);

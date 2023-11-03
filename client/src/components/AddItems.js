@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import useFetch from '../hooks/useFetch';
 import '../styles/Items.css';
+import { useNavigate } from 'react-router-dom';
 
 function AddItems() {
     const [items, setItems] = useState({
@@ -15,6 +16,8 @@ function AddItems() {
 
     const { data: categories, loading } = useFetch('/categories');
 
+    const navigate = useNavigate();
+    
     const handleChange = (e) => {
         setItems({
             ...items,
@@ -37,7 +40,8 @@ function AddItems() {
                     numberInStock: '',
                     url: '',
                 });
-                formRef.current.reset(); // This will reset the form fields
+                formRef.current.reset();
+                navigate(`/items/`);
             })
             .catch(error => {
                 console.error('There was an error!', error);

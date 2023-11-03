@@ -25,13 +25,13 @@ function UpdateCategory() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (window.confirm('Are you sure you want to update this item?')) {
+        if (window.confirm('Are you sure you want to update this category?')) {
             axios.put(`/categories/${id}`, categories)
             .then(() => {
                 navigate(`/categories/${id}`);
             })
             .catch(error => {
-                console.error(`There was an error updating the item: ${error}`);
+                console.error(`There was an error updating the category: ${error}`);
             });
         }
     };

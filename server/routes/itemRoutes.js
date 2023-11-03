@@ -8,5 +8,6 @@ router.post('/', itemController.createItem);
 router.get('/count', itemController.getItemCount);
 router.get('/:id', itemController.getItemById);
 router.put('/:id', itemController.updateItem);
+router.delete('/:id', itemController.deleteItem);
 
 module.exports = router;
