@@ -10,7 +10,7 @@ function CategoriesDetail() {
     const navigate = useNavigate(); 
 
     if (loading) {
-      return <div>Loading...</div>;
+      return <div className='loader'></div>;
     }
 
     const handleDelete = () => {

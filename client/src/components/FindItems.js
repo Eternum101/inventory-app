@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useFetch from '../hooks/useFetch';
 import '../styles/Items.css';
 import '../styles/Table.css'
+import { LuPackageCheck } from 'react-icons/lu'
 import { Link, useNavigate } from 'react-router-dom';
+import Pagination from './Pagination';
 
 function FindItems() {
-  const { data: items, loading: itemsLoading } = useFetch('/items');
-  const { data: categories, loading: categoriesLoading } = useFetch('/categories');
+  const { data: itemsData, loading: itemsLoading } = useFetch('/items');
+  const { data: categoriesData, loading: categoriesLoading } = useFetch('/categories');
   const { data: itemCount, loading: countLoading } = useFetch('/items/count');
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   if (itemsLoading || categoriesLoading || countLoading) {
-    return <div>Loading...</div>;
+    return <div className='loader'></div>;
   }
 
   const getCategoryName = (categoryId) => {
@@ -23,10 +27,23 @@ function FindItems() {
     navigate(`/items/${id}`);
   }
 
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  }
+
+  const categories = categoriesData.message;
+  const items = itemsData.message;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+
   return (
     <>
     <div className='items-header'>
-      <p className='item-list'>Items List</p>
+      <p className='item-list'>
+        <LuPackageCheck />
+        Items List
+      </p>
     <div className='items-header-right'>
     <div className='items-count'>
         <p>All Items <span>{itemCount}</span></p>
@@ -47,7 +64,7 @@ function FindItems() {
           </tr>
         </thead>
         <tbody>
-        {items.map(item => (
+        {currentItems.map(item => (
             <tr key={item._id} onClick={() => handleRowClick(item._id)}>
               <td>{item.name}</td>
               <td>{getCategoryName(item.category)}</td>
@@ -57,6 +74,7 @@ function FindItems() {
           ))}
         </tbody>
       </table>
+      <Pagination itemsPerPage={itemsPerPage} totalItems={itemCount} paginate={handlePageChange} currentPage={currentPage}/>
     </div>
     </>
   );

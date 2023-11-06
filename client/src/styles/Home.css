@@ -63,3 +63,32 @@
     padding: 8px;
     border-radius: 10px;
 }
+
+.btn-view {
+    border: 2px solid #257544;
+    padding: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out;
+}
+
+.btn-view:hover {
+    background-color: #257544;
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .inventory-summary-container {
+        width: 90%;
+        margin: 20px;
+    }
+
+    .summary-container {
+        flex-direction: column;
+    }
+
+    .count-summary {
+        width: 100%;
+        margin: 10px 0;
+    }
+}

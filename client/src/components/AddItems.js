@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import useFetch from '../hooks/useFetch';
 import '../styles/Items.css';
+import '../styles/Form.css';
 import { useNavigate } from 'react-router-dom';
 
 function AddItems() {
@@ -14,7 +15,7 @@ function AddItems() {
         url: ''
     });
 
-    const { data: categories, loading } = useFetch('/categories');
+    const { data: categoriesData, loading: categoriesLoading } = useFetch('/categories');
 
     const navigate = useNavigate();
     
@@ -48,9 +49,11 @@ function AddItems() {
             });
     };
     
-    if (loading) {
-        return <div>Loading...</div>;
+    if (categoriesLoading) {
+        return <div className='loader'></div>;
     }
+
+    const categories = categoriesData.message;
 
     return (
         <>

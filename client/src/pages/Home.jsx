@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import '../styles/Home.css'
 import { LuPackageCheck, LuFolderArchive } from 'react-icons/lu'
+import { Link } from 'react-router-dom';
 
 function Home() {
     const [itemCount, setItemCount] = useState(0);
@@ -26,10 +27,12 @@ function Home() {
                 <div className="count-summary">
                     <LuPackageCheck className="icon-1"/>
                     <p>Total Number of Items:</p> <span>{itemCount}</span>
+                    <Link to='/items'><button className="btn-view">View All Items</button></Link>
                 </div>
                 <div className="count-summary">
                     <LuFolderArchive className="icon-2"/>
                     <p>Total Number of Categories:</p> <span>{categoryCount}</span>
+                    <Link to='/categories'><button className="btn-view">View All Categories</button></Link>
                 </div>
             </div>
         </div>

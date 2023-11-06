@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import '../styles/Categories.css';
+import '../styles/Form.css';
 import { useNavigate } from 'react-router-dom';
 
 function AddCategory() {
@@ -38,8 +39,7 @@ function AddCategory() {
                 console.error('There was an error!', error);
             });
     }; 
-          
-
+    
     return (
         <>
         <form onSubmit={handleSubmit} ref={formRef}>

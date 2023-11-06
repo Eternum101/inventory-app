@@ -1,26 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useFetch from '../hooks/useFetch';
 import '../styles/Categories.css';
 import '../styles/Table.css';
+import { LuFolderArchive } from 'react-icons/lu'
 import { Link, useNavigate } from 'react-router-dom';
+import Pagination from './Pagination';
 
 function FindCategories() {
-    const { data: categories, loading: categoriesLoading } = useFetch('/categories');
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+    const { data: categoriesData, loading: categoriesLoading } = useFetch('/categories');
     const { data: categoriesCount, loading: countLoading } = useFetch('/categories/count');
     const navigate = useNavigate(); 
 
     if (categoriesLoading || countLoading) {
-      return <div>Loading...</div>;
+      return <div className='loader'></div>;
     }
 
     const handleRowClick = (id) => {
       navigate(`/categories/${id}`);
     }
 
+    const handlePageChange = (pageNumber) => {
+      setCurrentPage(pageNumber);
+    }
+
+    const categories = categoriesData.message;
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentCategories = categories.slice(indexOfFirstItem, indexOfLastItem);
+
+    console.log(currentCategories);
     return (
         <>
         <div className='category-header'>
-          <p className='category-list'>Category List</p>
+          <p className='category-list'>
+            <LuFolderArchive/>
+            Category List
+          </p>
         <div className='items-header-right'>
         <div className='category-count'>
             <p>All Categories <span>{categoriesCount}</span></p>
@@ -39,7 +56,7 @@ function FindCategories() {
               </tr>
             </thead>
             <tbody>
-            {categories.map(category => (
+            {currentCategories.map(category => (
                 <tr key={category._id} onClick={() => handleRowClick(category._id)}>
                   <td>{category.name}</td>
                   <td>{category.description}</td>
@@ -47,6 +64,7 @@ function FindCategories() {
               ))}
             </tbody>
           </table>
+          <Pagination itemsPerPage={itemsPerPage} totalItems={categoriesCount} paginate={handlePageChange} currentPage={currentPage} />
         </div>
         </>
       );

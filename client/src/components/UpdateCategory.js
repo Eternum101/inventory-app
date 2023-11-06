@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import '../styles/Items.css';
+import '../styles/Categories.css';
+import '../styles/Form.css';
 
 function UpdateCategory() {
     const [categories, setCategories] = useState(null);
@@ -20,7 +21,7 @@ function UpdateCategory() {
     }, []);    
 
     if(!categories){
-        return <div>Loading...</div>
+        return <div className='loader'></div>
     }
 
     const handleSubmit = (event) => {

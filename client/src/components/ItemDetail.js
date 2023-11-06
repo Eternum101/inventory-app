@@ -8,10 +8,10 @@ function ItemDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
     const { data: items, loading: itemsLoading } = useFetch(`/items/${id}`);
-    const { data: categories, loading: categoriesLoading } = useFetch('/categories');
-
+    const { data: categoriesData, loading: categoriesLoading } = useFetch('/categories');
+  
     if (itemsLoading || categoriesLoading) {
-        return <div>Loading...</div>;
+        return <div className='loader'></div>;
     }
 
     const getCategoryName = (categoryId) => {
@@ -31,6 +31,8 @@ function ItemDetail() {
         })
     }
   }
+
+  const categories = categoriesData.message;
   
     return (
         <div className='item-detail-container'>

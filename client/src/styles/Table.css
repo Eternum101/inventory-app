@@ -68,3 +68,21 @@
 .btn-add:hover {
   opacity: 0.9;
 }
+
+@media screen and (max-width: 768px) {
+    .table-container {
+      width: 90%;
+    }
+  
+    .table,
+    .table th,
+    .table td {
+      font-size: 0.8rem;
+    }
+  
+    .btn-add {
+      width: 100%;
+      padding: 10px;
+    }
+  }
+  

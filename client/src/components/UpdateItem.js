@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/Items.css';
+import '../styles/Form.css';
 
 function UpdateItem() {
     const [items, setItems] = useState(null);
@@ -19,19 +20,20 @@ function UpdateItem() {
         });
     }, [id]);
 
-    useEffect(() => {
-        axios.get('/categories')
-            .then(response => {
-                setCategories(response.data);
-                console.log(categories);
-            })
-            .catch(error => {
-                console.error('There was an error!', error);
-            });
-    }, []);
+    axios.get('/categories')
+    .then(response => {
+        if (Array.isArray(response.data.message)) {
+            setCategories(response.data.message);
+        } else {
+            console.error('categories data is not an array');
+        }
+    })
+    .catch(error => {
+        console.error('There was an error!', error);
+    });
 
     if(!items){
-        return <div>Loading...</div>
+        return <div className='loader'></div>
     }
 
     const handleSubmit = (event) => {

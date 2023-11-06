@@ -1,8 +1,23 @@
 const { Item } = require('../models/items');
 
 exports.getAllItems = async (req, res) => {
-  const items = await Item.find();
-  res.json(items);
+  const pageNo = parseInt(req.query.pageNo);
+  const size = parseInt(req.query.size);
+  const query = {};
+  if (pageNo < 0 || pageNo === 0) {
+    response = { "error": true, "message": "invalid page number, should start with 1" };
+    return res.json(response);
+  }
+  query.skip = size * (pageNo - 1);
+  query.limit = size;
+  // Find some items with pagination
+  try {
+    const data = await Item.find({}, {}, query);
+    response = { "error": false, "message": data };
+  } catch (err) {
+    response = { "error": true, "message": "Error fetching data" };
+  }
+  res.json(response);
 };
 
 exports.getItemById = async (req, res) => {
