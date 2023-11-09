@@ -1,9 +1,11 @@
+require('dotenv').config({ path: '../.env' });
+
 const express = require('express');
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 const mongoose = require('mongoose');
-const mongoDB = 'mongodb+srv://adminInventoryApp:inventory-app.001@inventoryappcluster.bw6xqaa.mongodb.net/InventoryAppCluster?retryWrites=true&w=majority&appName=AtlasApp';
+const mongoDB = process.env.MONGODB_URL;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
