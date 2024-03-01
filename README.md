@@ -53,6 +53,7 @@ A Inventory Management application that includes categories and items.
 - Shows List of Every Item or Category
 - Overally Summary Section
 - Individual Page for Each Item or Category
+- Implementation of Page Numbers for Filtering
 - Responsive User Interface
 
 [Back to Top](#inventory-app)
