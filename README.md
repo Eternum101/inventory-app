@@ -13,24 +13,32 @@ A Inventory Management application that includes categories and items.
 
 ## Screenshots
 
-### Home Page
-![](screenshots/home-1-shopping-cart.png) 
-![](screenshots/home-2-shopping-cart.png)
+### Initial Screen
+![](screenshots/initial-screen-inventory-app.png) 
 
-### Parts Page
-![](screenshots/parts-1-shopping-cart.png)
-![](screenshots/parts-2-shopping-cart.png)
-![](screenshots/parts-3-shopping-cart.png)
+### Items Page
+![](screenshots/items-page-inventory-app.png) 
 
-### About Us Page
-![](screenshots/about-us-1-shopping-cart.png)
-![](screenshots/about-us-2-shopping-cart.png)
+### Add Item
+![](screenshots/add-item-inventory-app.png)
 
-### Individual Part Page
-![](screenshots/individual-part-page-shopping-cart.png)
+### Individual Items Page
+![](screenshots/individual-item-page-inventory-app.png)
 
-### Shopping Cart
-![](screenshots/item-list-shopping-cart.png)
+### Update Item
+![](screenshots/update-item-inventory-app.png)
+
+### Categories Page
+![](screenshots/categories-page-inventory-app.png)
+
+### Add Category
+![](screenshots/add-category-inventory-app.png)
+
+### Individual Categories Page
+![](screenshots/individual-categories-page-inventory-app.png)
+
+### Update Category
+![](screenshots/update-category-inventory-app.png)
 
 [Back to Top](#inventory-app)
 
