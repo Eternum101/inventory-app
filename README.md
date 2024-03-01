@@ -35,7 +35,7 @@ A Inventory Management application that includes categories and items.
 ![](screenshots/add-category-inventory-app.png)
 
 ### Individual Categories Page
-![](screenshots/individual-categories-page-inventory-app.png)
+![](screenshots/individual-category-page-inventory-app.png)
 
 ### Update Category
 ![](screenshots/update-category-inventory-app.png)
