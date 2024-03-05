@@ -15,7 +15,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.use(express.json());
 app.use(cors({
   origin: ["http://localhost:3000", 
-  "https://https://inventory-app-3hvj.onrender.com/"],
+  "https://inventory-app-3hvj.onrender.com"],
 }));
 
 app.get('/api', (req, res) => {
