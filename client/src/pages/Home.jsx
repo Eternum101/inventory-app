@@ -3,17 +3,18 @@ import axios from "axios";
 import '../styles/Home.css'
 import { LuPackageCheck, LuFolderArchive } from 'react-icons/lu'
 import { Link } from 'react-router-dom';
+import { URL } from "../App";
 
 function Home() {
     const [itemCount, setItemCount] = useState(0);
     const [categoryCount, setCategoryCount] = useState(0);
 
     useEffect(() => {
-        axios.get('/items/count')
+        axios.get(`${URL}/items/count`)
         .then(res => setItemCount(res.data))
         .catch(error => console.error(`There was an error retrieving the item count: ${error}`));
 
-        axios.get('/categories/count')
+        axios.get(`${URL}/categories/count`)
         .then(res => setCategoryCount(res.data))
         .catch(error => console.error(`There was an error retrieving the category count: ${error}`));
     }, []);
