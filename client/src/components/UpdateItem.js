@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/Items.css';
 import '../styles/Form.css';
+import { URL } from '../App';
 
 function UpdateItem() {
     const [items, setItems] = useState(null);
@@ -11,7 +12,7 @@ function UpdateItem() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        axios.get(`/items/${id}`)
+        axios.get(`${URL}/items/${id}`)
         .then(response => {
             setItems(response.data);
         })
@@ -20,7 +21,7 @@ function UpdateItem() {
         });
     }, [id]);
 
-    axios.get('/categories')
+    axios.get(`${URL}/categories`)
     .then(response => {
         if (Array.isArray(response.data.message)) {
             setCategories(response.data.message);
@@ -39,7 +40,7 @@ function UpdateItem() {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (window.confirm('Are you sure you want to update this item?')) {
-            axios.put(`/items/${id}`, items)
+            axios.put(`${URL}/items/${id}`, items)
             .then(() => {
                 navigate(`/items/${id}`);
             })

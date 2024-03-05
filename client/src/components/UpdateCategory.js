@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/Categories.css';
 import '../styles/Form.css';
+import { URL } from '../App';
 
 function UpdateCategory() {
     const [categories, setCategories] = useState(null);
@@ -10,7 +11,7 @@ function UpdateCategory() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`/categories/${id}`)
+        axios.get(`${URL}/categories/${id}`)
             .then(response => {
                 setCategories(response.data);
                 console.log(categories);

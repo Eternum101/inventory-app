@@ -3,12 +3,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import '../styles/Items.css'; 
 import axios from 'axios';
+import { URL } from '../App';
 
 function ItemDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { data: items, loading: itemsLoading } = useFetch(`/items/${id}`);
-    const { data: categoriesData, loading: categoriesLoading } = useFetch('/categories');
+    const { data: items, loading: itemsLoading } = useFetch(`${URL}/items/${id}`);
+    const { data: categoriesData, loading: categoriesLoading } = useFetch(`${URL}/categories`);
   
     if (itemsLoading || categoriesLoading) {
         return <div className='loader'></div>;
@@ -21,7 +22,7 @@ function ItemDetail() {
 
     const handleDelete = () => {
       if (window.confirm('Are you sure you want to delete this item?')) {
-      axios.delete(`/items/${id}`)
+      axios.delete(`${URL}/items/${id}`)
         .then(response => {
           console.log(response);
           navigate('/items');

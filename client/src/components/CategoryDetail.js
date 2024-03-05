@@ -3,10 +3,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import '../styles/Categories.css';
 import axios from 'axios';
+import { URL } from '../App';
 
 function CategoriesDetail() {
     const { id } = useParams();
-    const { data: categories, loading } = useFetch(`/categories/${id}`);
+    const { data: categories, loading } = useFetch(`${URL}/categories/${id}`);
     const navigate = useNavigate(); 
 
     if (loading) {
@@ -15,7 +16,7 @@ function CategoriesDetail() {
 
     const handleDelete = () => {
       if (window.confirm('Are you sure you want to delete this category?')) {
-      axios.delete(`/categories/${id}`)
+      axios.delete(`${URL}/categories/${id}`)
         .then(response => {
           console.log(response);
           navigate('/categories');

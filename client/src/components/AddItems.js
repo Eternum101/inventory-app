@@ -4,6 +4,7 @@ import useFetch from '../hooks/useFetch';
 import '../styles/Items.css';
 import '../styles/Form.css';
 import { useNavigate } from 'react-router-dom';
+import { URL } from '../App';
 
 function AddItems() {
     const [items, setItems] = useState({
@@ -15,7 +16,7 @@ function AddItems() {
         url: ''
     });
 
-    const { data: categoriesData, loading: categoriesLoading } = useFetch('/categories');
+    const { data: categoriesData, loading: categoriesLoading } = useFetch(`${URL}/categories`);
 
     const navigate = useNavigate();
     
@@ -30,7 +31,7 @@ function AddItems() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('/items', items)
+        axios.post(`${URL}/items`, items)
             .then(response => {
                 console.log(response);
                 setItems({

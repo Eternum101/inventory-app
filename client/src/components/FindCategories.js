@@ -5,12 +5,13 @@ import '../styles/Table.css';
 import { LuFolderArchive } from 'react-icons/lu'
 import { Link, useNavigate } from 'react-router-dom';
 import Pagination from './Pagination';
+import { URL } from '../App';
 
 function FindCategories() {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
-    const { data: categoriesData, loading: categoriesLoading } = useFetch('/categories');
-    const { data: categoriesCount, loading: countLoading } = useFetch('/categories/count');
+    const { data: categoriesData, loading: categoriesLoading } = useFetch(`${URL}/categories`);
+    const { data: categoriesCount, loading: countLoading } = useFetch(`${URL}/categories/count`);
     const navigate = useNavigate(); 
 
     if (categoriesLoading || countLoading) {

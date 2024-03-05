@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../styles/Categories.css';
 import '../styles/Form.css';
 import { useNavigate } from 'react-router-dom';
+import { URL } from '../App';
 
 function AddCategory() {
     const [categories, setCategories] = useState({
@@ -24,7 +25,7 @@ function AddCategory() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('/categories', categories)
+        axios.post(`${URL}/categories`, categories)
             .then(response => {
                 console.log(response);
                 setCategories({

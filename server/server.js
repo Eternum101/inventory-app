@@ -1,6 +1,8 @@
 require('dotenv').config({ path: '../.env' });
 
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -11,6 +13,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/api', (req, res) => {
   res.send('Hello World!')

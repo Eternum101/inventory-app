@@ -5,11 +5,12 @@ import '../styles/Table.css'
 import { LuPackageCheck } from 'react-icons/lu'
 import { Link, useNavigate } from 'react-router-dom';
 import Pagination from './Pagination';
+import { URL } from '../App';
 
 function FindItems() {
-  const { data: itemsData, loading: itemsLoading } = useFetch('/items');
-  const { data: categoriesData, loading: categoriesLoading } = useFetch('/categories');
-  const { data: itemCount, loading: countLoading } = useFetch('/items/count');
+  const { data: itemsData, loading: itemsLoading } = useFetch(`${URL}/items`);
+  const { data: categoriesData, loading: categoriesLoading } = useFetch(`${URL}/categories`);
+  const { data: itemCount, loading: countLoading } = useFetch(`${URL}/items/count`);
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;

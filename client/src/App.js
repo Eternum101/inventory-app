@@ -11,6 +11,8 @@ import UpdateItem from "./components/UpdateItem";
 import UpdateCatgory from "./components/UpdateCategory";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+export const URL = process.env.REACT_APP_SERVER_URL;
+
 function App() {
 
   const [backendData, setBackendData] = useState("");
