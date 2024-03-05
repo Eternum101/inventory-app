@@ -1,0 +1,11 @@
+{
+  "name": "inventory-app",
+  "version": "1.0.0",
+  "description": "A Inventory Application created using React.js, Node.js, Express.js &amp; MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
