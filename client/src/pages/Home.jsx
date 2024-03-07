@@ -8,16 +8,36 @@ import { URL } from "../App";
 function Home() {
     const [itemCount, setItemCount] = useState(0);
     const [categoryCount, setCategoryCount] = useState(0);
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
+        setLoading(true);
         axios.get(`${URL}/items/count`)
-        .then(res => setItemCount(res.data))
-        .catch(error => console.error(`There was an error retrieving the item count: ${error}`));
+        .then(res => {
+            setItemCount(res.data);
+            setLoading(false);
+        })
+        .catch(error => {
+            console.error(`There was an error retrieving the item count: ${error}`);
+            setLoading(false);
+        });
 
+        setLoading(true);
         axios.get(`${URL}/categories/count`)
-        .then(res => setCategoryCount(res.data))
-        .catch(error => console.error(`There was an error retrieving the category count: ${error}`));
+        .then(res => {
+            setCategoryCount(res.data);
+            setLoading(false);
+        })
+        .catch(error => {
+            console.error(`There was an error retrieving the category count: ${error}`);
+            setLoading(false);
+        });
     }, []);
+
+    if (loading) {
+        return <div className='loader'></div>;
+    }
 
     return (
     <>
