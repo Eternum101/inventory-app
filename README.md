@@ -1,6 +1,6 @@
 # Inventory App
 
-View Demo
+🔗 [View Demo](https://inventory-app-3hvj.onrender.com)
 
 ## Table of Contents
 - [About The Project](#about-the-project)
