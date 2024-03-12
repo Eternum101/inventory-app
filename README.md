@@ -1,6 +1,6 @@
 # Inventory App
 
-🔗 [View Demo](https://inventory-app-3hvj.onrender.com)
+🔗 [View Demo](https://inventory-app-3hvj.onrender.com) **(Please Allow Up to 50 Seconds for Website to Load from Cold Start)**
 
 ## Table of Contents
 - [About The Project](#about-the-project)
